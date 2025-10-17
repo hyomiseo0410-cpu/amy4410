@@ -1,6 +1,9 @@
 import os, asyncio, discord
 from discord.ext import commands
 
+import sys
+sys.modules["audioop"] = None  # Python 3.13용 임시 패치
+
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -26,5 +29,4 @@ async def main():
     finally:
         await bot.close()
 
-if __name__ == "__main__":
-    asyncio.run(main())
+asyncio.run(main())
